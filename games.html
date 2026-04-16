@@ -42,19 +42,18 @@ body {
   box-shadow: 0 0 12px #00ffae;
 }
 
-/* GRID */
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* ОСНОВНАЯ СЕТКА ТУРНИРНОЙ СЕТКИ */
+/* ГЛАВНЫЙ GRID */
 .bracket {
   display: grid;
-  grid-template-columns: repeat(5, auto);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 60px;
-  align-items: center; /* ВЕРТИКАЛЬНОЕ ВЫРАВНИВАНИЕ ПО ЦЕНТРУ */
+  align-items: start;
 }
 
 /* КОЛОНКА */
@@ -62,16 +61,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  justify-content: center; /* ВЕРТИКАЛЬНОЕ ВЫРАВНИВАНИЕ КОНТЕНТА ВНУТРИ КОЛОНКИ */
 }
 
-/* КАЖДЫЙ МАТЧ ВЫРАВНИВАЕТСЯ ПО ЦЕНТРУ СВОЕЙ ЯЧЕЙКИ */
+/* МАТЧ */
 .match {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  place-self: center; /* ЦЕНТРИРОВАНИЕ В GRID-ЯЧЕЙКЕ */
 }
 
 /* TEAM */
@@ -103,15 +100,14 @@ body {
   border-radius: 6px;
 }
 
-/* SCORE */
 .score {
   font-size: 12px;
   color: #00ffae;
 }
 
-/* LOWER BRACKET */
+/* LOWER теперь НЕ ломает сетку */
 .lower {
-  margin-top: 80px;
+  margin-top: 70px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -119,7 +115,6 @@ body {
   padding-top: 20px;
 }
 
-/* MODAL */
 .modal {
   display: none;
   position: fixed;
@@ -135,11 +130,9 @@ body {
   border: 1px solid #00ffae;
   padding: 20px;
   border-radius: 10px;
-  color: #7fffd4;
   text-align: center;
 }
 
-/* КНОПКА ЗАКРЫТЬ — В СТИЛЕ САЙТА */
 .close-btn {
   margin-top: 15px;
   display: inline-block;
@@ -148,26 +141,11 @@ body {
   padding: 6px 16px;
   border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 .close-btn:hover {
   background: #00ffae;
   color: #050807;
-  box-shadow: 0 0 10px #00ffae;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .bracket {
-    grid-template-columns: repeat(2, auto);
-    gap: 30px;
-  }
-
-  .team {
-    width: 110px;
-    height: 65px;
-  }
 }
 </style>
 </head>
@@ -183,87 +161,56 @@ body {
 
 <div class="bracket">
 
-<!-- ROUND 1 -->
-<div class="round">
-  <div class="match">
-    <div class="team"><img src="img/СЛОНЯРЫ.jpg" alt=""><span class="label">Team 1</span></div>
-    <div class="score">0 : 2</div>
-    <div class="team"><img src="img/322.jpg" alt=""><span class="label">Team 2</span></div>
+  <!-- ROUND 1 -->
+  <div class="round">
+    <div class="match">
+      <div class="team"><img src="img/СЛОНЯРЫ.jpg"><span class="label">Team 1</span></div>
+      <div class="score">0 : 2</div>
+      <div class="team"><img src="img/322.jpg"><span class="label">Team 2</span></div>
+    </div>
+
+    <div class="match">
+      <div class="team"><img src="img/РПО-3.jpg"><span class="label">Team 4</span></div>
+      <div class="score">2 : 0</div>
+      <div class="team"><img src="img/КУЗЬМИН-ТИМ.jpg"><span class="label">Team 5</span></div>
+    </div>
+
+    <div class="match">
+      <div class="team"><img src="img/МЕГА-АНДОНЫ.jpg"><span class="label">Team 3</span></div>
+      <div class="score">2 : 0</div>
+      <div class="team"><img src="img/РПО-3.jpg"><span class="label">Team 4</span></div>
+    </div>
   </div>
 
-  <div class="match">
-    <div class="team"><img src="img/РПО-3.jpg" alt=""><span class="label">Team 4</span></div>
-    <div class="score">2 : 0</div>
-    <div class="team"><img src="img/КУЗЬМИН-ТИМ.jpg" alt=""><span class="label">Team 5</span></div>
+  <!-- ROUND 2 -->
+  <div class="round">
+    <div class="match">
+      <div class="team"><img src="img/322.jpg"><span class="label">Team 2</span></div>
+      <div class="score">2 : 0</div>
+      <div class="team"><img src="img/МЕГА-АНДОНЫ.jpg"><span class="label">Team 3</span></div>
+    </div>
   </div>
 
-  <div class="match">
-    <div class="team"><img src="img/МЕГА-АНДОНЫ.jpg" alt=""><span class="label">Team 3</span></div>
-    <div class="score">2 : 0</div>
-    <div class="team"><img src="img/РПО-3.jpg" alt=""><span class="label">Team 4</span></div>
-  </div>
-</div>
-
-<!-- ROUND 2 -->
-<div class="round">
-  <div class="match">
-    <div class="team"><img src="img/322.jpg" alt=""><span class="label">Team 2</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><img src="img/МЕГА-АНДОНЫ.jpg" alt=""><span class="label">Team 3</span></div>
-  </div>
-</div>
-
-<!-- ПОЛУФИНАЛ -->
-<div class="round">
-  <div class="match">
-    <div class="team"><img src="img/РПО-3.jpg" alt=""><span class="label">Team 4</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><span class="label">Win1</span></div>
+  <div class="round">
+    <div class="match">
+      <div class="team"><img src="img/МЕГА-АНДОНЫ.jpg"><span class="label">Team 3</span></div>
+      <div class="score">0 : 0</div>
+      <div class="team"><img src="img/РПО-3.jpg"><span class="label">Team 4</span></div>
+    </div>
   </div>
 
-  <div class="match">
-    <div class="team"><img src="img/РПО-3.jpg" alt=""><span class="label">Team 4</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><span class="label">Win2</span></div>
+  <!-- ФИНАЛ -->
+  <div class="round">
+    <div class="match">
+      <div class="team"><img src="img/322.jpg"><span class="label">Team 2</span></div>
+      <div class="score">0 : 0</div>
+      <div class="team"><span class="label">Team 3</span></div>
+    </div>
   </div>
-
-  <div class="match">
-    <div class="team"><span class="label">Win1</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><span class="label">Win2</span></div>
-    <div class="score">0 : 0</div>
-  </div>
-</div>
-
-<!-- FINAL -->
-<div class="round">
-  <div class="match">
-    <div class="team"><span class="label">Top 1</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><span class="label">Top 2</span></div>
-    <div class="score">0 : 0</div>
-  </div>
-</div>
-
-</div>
-
-<!-- LOWER -->
-<div class="lower">
-  <div class="match">
-    <div class="team"><img src="img/КУЗЬМИН-ТИМ.jpg" alt=""><span class="label">Team 5</span></div>
-    <div class="score">0 : 0</div>
-    <div class="team"><span class="label">Loser</span></div>
-    <div class="score">0 : 0</div>
-  </div>
-</div>
-
-</div>
-
 <!-- MODAL -->
 <div class="modal" id="help">
   <div class="box">
-    Из-за распада команды Слоняры, Кузьмин-Тим получил возможность играть дальше, но в нижней сетке. 
-    А команде Мега-Андоны пришлось играть с РПО-3, чтобы сыграть 2/2 игр.
+    Слоняры не захотели играть даже вторую катку в первом раунде - распались. Кузьмин Тим 3 раза не могли нормально собрать команду - распались.
     <div class="close-btn" onclick="closeHelp()">Закрыть</div>
   </div>
 </div>
@@ -277,7 +224,6 @@ function closeHelp(){
   document.getElementById('help').style.display='none';
 }
 
-/* ESC ЗАКРЫТИЕ */
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){
     closeHelp();
